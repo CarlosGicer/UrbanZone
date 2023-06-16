@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <nav class="sticky-top">
+    <nav>
         <ul class="menu nav-menu">
             <a href="https://fontmeme.com/shadow-effect/" id="este"><img
                     src="https://fontmeme.com/permalink/230612/02a9c006e8f5fe9bee2b8a725e9948e6.png" alt="shadow-effect"
@@ -44,11 +44,11 @@
 
     <div id="top">
         <h1>{{ $zona->nombre }}</h1>
-         @foreach ($deportes as $deporte)
-            @if ($zona->deporte_id == $deporte->id) 
+        @foreach ($deportes as $deporte)
+            @if ($zona->deporte_id == $deporte->id)
                 <h3>{{ $deporte->nombre }}</h3>
             @endif
-        @endforeach 
+        @endforeach
         <img class="FotoZona" src="{{ asset($zona->imagen) }}" alt="..." width="30%" height="30%">
 
         <!-- Agrega los enlaces a los archivos JavaScript de Bootstrap -->
@@ -91,38 +91,50 @@
                         @foreach ($usuarios as $usuario)
                             @if ($publicacion->user_id == $usuario->id)
                                 <p>Creador: {{ $usuario->nombre }}</p>
-                            @endif
+                            @endif 
                         @endforeach
 
-                        <form action="/publicaciones/comentario/crear" method="POST" enctype="multipart/form-data"
+                        <form action="/publicaciones/comentario/crear" method="POST" class="msger-inputarea" enctype="multipart/form-data"
                             id="msform">
                             @csrf
                             <input type="hidden" id="user_id" name="user_id" value="{{ $usuario->id }} " required>
                             <input type="hidden" id="zona" name="zona" value="{{ $zona->id }} " required>
                             <input type="hidden" id="publicacion_id" name="publicacion_id"
                                 value="{{ $publicacion->id }} " required>
-                            <label for="Comentario">Comentario:</label>
-                            <input type="text" id="texto" name="texto" required>
-                            <button class="submit action-button" type='submit' name='enviar'
+                            <input type="text" id="texto" name="texto" class="msger-input" placeholder="Enter your message..." required>
+                            <button class="msger-send-btn" type='submit' name='enviar'
                                 texto=''>Comentar</button>
                         </form>
+
+
+
                         <br>
 
                         @foreach ($comentarios as $comentario)
                             @if ($comentario->publicacion_id == $publicacion->id)
                                 @foreach ($usuarios as $usuario)
                                     @if ($comentario->user_id == $usuario->id)
-                                        <p style="color:black">
-                                            <img class="img-perfil" src="{{ asset($usuario->imagen) }}" alt="">
-                                            {{ $usuario->nombre }} :{{ $comentario->texto }}
-                                        </p>
-                                        <span></span>
+                                        <div> <img class="msg-img" src="{{ asset($usuario->imagen) }}" alt="">
+                                        </div>
+
+                                        <div class="msg-bubble">
+                                            <div class="msg-info">
+                                                <div class="msg-info-name"> {{ $usuario->nombre }}</div>
+                                                <div class="msg-info-time"> {{ $comentario->update_at }}</div>
+                                            </div>
+
+                                            <div class="msg-text">
+                                                {{ $comentario->texto }}
+                                            </div>
+                                        </div>
                                     @endif
                                 @endforeach
                             @endif
                         @endforeach
+
                     </div>
                 </div>
+                <span></span>
             </div>
         @endforeach
     </div>
@@ -196,7 +208,7 @@
         var longitude = position.coords.longitude;
 
         // Establecer el centro del mapa en la ubicación actual del usuario
-        map.setCenter([longitude, latitude]);
+        map.setCenter([{{ $zona->longitud }}, {{ $zona->latitud }}]);
     });
 
     var markers = [{

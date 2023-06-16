@@ -15,11 +15,10 @@
 
    
     <nav>
-        <a href="https://fontmeme.com/shadow-effect/" id="este"><img
-            src="https://fontmeme.com/permalink/230612/02a9c006e8f5fe9bee2b8a725e9948e6.png" alt="shadow-effect"
-            border="0"></a>
-
         <ul class="menu nav-menu">
+            <a href="https://fontmeme.com/shadow-effect/" id="este"><img
+                    src="https://fontmeme.com/permalink/230612/02a9c006e8f5fe9bee2b8a725e9948e6.png" alt="shadow-effect"
+                    border="0"></a>
             <li><a href="/Inicio">Mapa</a></li>
             <li><a href="/zonas">Zonas</a></li>
             <li><a href="/zona/nueva">Nueva Zona</a></li>
@@ -43,7 +42,6 @@
         </ul>
 
     </nav>
-
 
 
 

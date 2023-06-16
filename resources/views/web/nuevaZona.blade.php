@@ -25,7 +25,7 @@
 
             /*background = gradient + image pattern combo*/
             background:
-                linear-gradient(#e7723c, #9e4319)
+                linear-gradient(#e1f6ff, #afe8ff)
         }
 
         body {
@@ -81,6 +81,7 @@
             text-decoration: none;
             font-size: 14px;
         }
+
         #msform .cancel.action-button {
             width: 100px;
             background: #ae2727;
@@ -94,6 +95,7 @@
             text-decoration: none;
             font-size: 14px;
         }
+
         #msform .action-button:hover,
         #msform .action-button:focus {
             box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
@@ -111,6 +113,21 @@
             color: #2C3E50;
             margin-bottom: 10px;
         }
+
+        select {
+            width: 200px;
+           
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select option {
+            font-size: 14px;
+            background-color: #fff;
+            color: #333;
+        }
     </style>
 </head>
 
@@ -121,11 +138,11 @@
         <fieldset>
             <h2 class="fs-title">Create your account</h2>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            <br>
+            <input type="text" id="nombre" name="nombre" style="border-radius: 60px;" required>
+            <br> <br>
             <label for="imagen">Imagen:</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*" required>
-            <br>
+            <input type="file" id="imagen" name="imagen" accept="image/*" style="border-radius: 60px; padding-left:40%" required>
+            <br> <br>
             <label for="deporte_id">Tipo de Deporte:</label>
             <select name="deporte_id" id="deporte_id">
                 @foreach ($deportes as $deporte)
@@ -133,18 +150,20 @@
                 @endforeach
 
             </select>
+
+            <br>
             <br>
             ¿Donde?
-            <div style=" border: 1px solid black;">
-                <div id="map" style="height: 60vh;  width: 100%;  color: black;"></div>
+            <div style=" border: 1px solid black; border-radius: 20px;">
+                <div id="map" style="height: 60vh;  width: 100%;  color: black; border-radius: 20px;"></div>
             </div>
             <input type="hidden" id="latitud" name="latitud" required>
-            <br>
+           
             <input type="hidden" id="longitud" name="longitud" required>
-            <br>
+         
             <button class="submit action-button" type='submit' name='enviar' texto=''>Crear</button>
             <button class="cancel action-button" type="button" onclick="window.history.back()">Cancelar</button>
-
+        </fieldset>
     </form>
 
 </body>

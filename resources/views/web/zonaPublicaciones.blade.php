@@ -47,11 +47,7 @@
 
     <div id="top">
         <h1>{{ $zona->nombre }}</h1>
-        @foreach ($deportes as $deporte)
-            @if ($zona->deporte_id == $deporte->id)
-                <h3>{{ $deporte->nombre }}</h3>
-            @endif
-        @endforeach
+      
         <img class="FotoZona" src="{{ asset($zona->imagen) }}" alt="..." width="30%" height="30%">
 
         <!-- Agrega los enlaces a los archivos JavaScript de Bootstrap -->

@@ -136,7 +136,7 @@
         @csrf
         <!-- fieldsets -->
         <fieldset>
-            <h2 class="fs-title">Create your account</h2>
+            <h2 class="fs-title">Crear Zona</h2>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" style="border-radius: 60px;" required>
             <br> <br>
@@ -153,7 +153,7 @@
 
             <br>
             <br>
-            ¿Donde?
+            <h2 class="fs-title">¿Donde?</h2>
             <div style=" border: 1px solid black; border-radius: 20px;">
                 <div id="map" style="height: 60vh;  width: 100%;  color: black; border-radius: 20px;"></div>
             </div>

@@ -27,8 +27,9 @@
                 <a href="#">Deportes</a>
                 <ul class="menu-item">
                     @foreach ($deportes as $deporte)
-                        <li><a href="/Inicio/{{ $deporte->id }}">{{ $deporte->nombre }}</a></li>
+                        <li><a href="/zonas/{{ $deporte->id }}">{{ $deporte->nombre }}</a></li>
                     @endforeach
+                    <li><a href="/zonas">Todos</a></li>
                 </ul>
 
             </li>
@@ -44,7 +45,17 @@
 
     </nav>
     <div class="main">
+
+        <form action="/Buscador" method="POST" enctype="multipart/form-data" class="msger-inputarea">
+            @csrf
+            <input type="text" id="buscador" name="buscador" class="msger-input"
+                placeholder="Buscar...">
+            <button class="msger-send-btn" type='submit' name='enviar' texto=''>Buscar</button>
+        </form>
         <ul class="cards">
+
+
+
             @foreach ($zonas as $zona)
                 @if ($deporte_id == $zona->deporte_id)
                     <li class="cards_item">
@@ -57,9 +68,10 @@
                                         <p class="card_text">Deporte: {{ $deporte->nombre }} </p>
                                     @endif
                                 @endforeach
-                              
-                                    <a href="/zonas/publicaciones/{{ $zona->id }}"><button class="btn card_btn"> Ver </button></a>
-                               
+
+                                <a href="/zonas/publicaciones/{{ $zona->id }}"><button class="btn card_btn"> Ver
+                                    </button></a>
+
                             </div>
                         </div>
                     </li>
@@ -74,14 +86,19 @@
                                         <p class="card-text">Deporte: {{ $deporte->nombre }} </p>
                                     @endif
                                 @endforeach
-                                <a href="/zonas/publicaciones/{{ $zona->id }}"><button class="btn card_btn"> Ver </button></a>
-                               
+                                <a href="/zonas/publicaciones/{{ $zona->id }}"><button class="btn card_btn"> Ver
+                                    </button></a>
+
                             </div>
                         </div>
                     </li>
                 @endif
             @endforeach
+            <div class="pagination justify-content-center">
+                {{$zonas->links()}}
+            </div>
         </ul>
+        
     </div>
     <div class="footer-clean">
         <footer>

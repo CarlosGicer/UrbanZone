@@ -10,9 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('cssMio/stylesMio.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="font-family: 'Courgette', cursive;">
     <nav>
         <ul class="menu nav-menu">
             <a href="https://fontmeme.com/shadow-effect/" id="este"><img
@@ -91,17 +94,18 @@
                         @foreach ($usuarios as $usuario)
                             @if ($publicacion->user_id == $usuario->id)
                                 <p>Creador: {{ $usuario->nombre }}</p>
-                            @endif 
+                            @endif
                         @endforeach
 
-                        <form action="/publicaciones/comentario/crear" method="POST" class="msger-inputarea" enctype="multipart/form-data"
-                            id="msform">
+                        <form action="/publicaciones/comentario/crear" method="POST" class="msger-inputarea"
+                            enctype="multipart/form-data" id="msform">
                             @csrf
                             <input type="hidden" id="user_id" name="user_id" value="{{ $usuario->id }} " required>
                             <input type="hidden" id="zona" name="zona" value="{{ $zona->id }} " required>
                             <input type="hidden" id="publicacion_id" name="publicacion_id"
                                 value="{{ $publicacion->id }} " required>
-                            <input type="text" id="texto" name="texto" class="msger-input" placeholder="Enter your message..." required>
+                            <input type="text" id="texto" name="texto" class="msger-input"
+                                placeholder="Enter your message..." required>
                             <button class="msger-send-btn" type='submit' name='enviar'
                                 texto=''>Comentar</button>
                         </form>

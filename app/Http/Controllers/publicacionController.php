@@ -17,11 +17,16 @@ class publicacionController extends Controller
      */
     public function index()
     {
-        return view("web.zonas", ['zonas' => Zona::all(), 'deportes' => Deporte::all(), 'deporte_id' => null]);
+        return view("web.zonas", ['zonas'=>Zona::paginate(6), 'deportes' => Deporte::all(), 'deporte_id' => null]);
+    }
+    public function index2(Request $request)
+    {
+       
+        return view("web.zonas", ['zonas' => Zona::where('nombre',$request->input('buscador'))->get(), 'deportes' => Deporte::all(), 'deporte_id' => null]);
     }
     public function filtro_deporte(Deporte $deporte)
     {
-        return view("web.zonas", ['zonas' => Zona::all(), 'deportes' => Deporte::all(), 'deporte_id' => $deporte->id]);
+        return view("web.zonas", ['zonas'=>Zona::paginate(6), 'deportes' => Deporte::all(), 'deporte_id' => $deporte->id]);
     }
     /**
      * Show the form for creating a new resource.

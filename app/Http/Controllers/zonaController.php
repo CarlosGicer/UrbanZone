@@ -14,7 +14,6 @@ class zonaController extends Controller
     public function index()
     {
         return view("web.inicio", ['zonas'=>Zona::all(), 'deportes'=>Deporte::all(), 'deporte_id'=>null]);
-        
     }
     public function filtro_deporte(Deporte $deporte)
     {

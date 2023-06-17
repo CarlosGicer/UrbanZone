@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/Inicio', [zonaController::class, 'index']);
     Route::get('/Inicio/{deporte}', [zonaController::class, 'filtro_deporte']);
     Route::get('/zonas', [publicacionController::class, 'index']);
+    Route::post('/Buscador', [publicacionController::class, 'index2']);
     Route::get('/zonas/{deporte}', [publicacionController::class, 'filtro_deporte']);
     Route::get('/zonas/publicaciones/{zona}', [publicacionController::class, 'show']);
   

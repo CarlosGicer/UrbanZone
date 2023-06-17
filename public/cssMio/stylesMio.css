@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+    height: 100%;
+}
 
 .bt {
     background-color: #4CAF50;
@@ -65,10 +68,11 @@ a {
   
 
 .msg-bubble {
-    max-width: 450px;
+    width: 450px;
     padding: 15px;
     border-radius: 15px;
     background: rgb(230, 219, 210);
+    word-wrap: break-word;
 }
 
 
@@ -133,10 +137,11 @@ a:hover {
 }
 
 body {
-    background:
-        linear-gradient(#e1f6ff, #afe8ff)
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background: linear-gradient(#daf4ff, #c9ecfc) no-repeat center center fixed;
 }
-
 
 .nav-menu:before,
 .nav-menu:after {
@@ -282,11 +287,16 @@ nav {
 /*====================
         Footer
 ====================== */
+footer{
+    
+}
+
 
 .footer-clean {
     padding: 50px 0;
     background-color: #000;
     color: #FFF;
+    margin-top: auto;
 }
 
 .footer-clean h3 {
@@ -476,7 +486,7 @@ h1 {
 }
 
 .card_text {
-    color: #ffffff;
+    color: #000000;
     font-size: 0.875rem;
     line-height: 1.5;
     margin-bottom: 1.25rem;

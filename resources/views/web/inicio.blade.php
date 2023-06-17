@@ -28,6 +28,7 @@
                     @foreach ($deportes as $deporte)
                         <li><a href="/Inicio/{{ $deporte->id }}">{{ $deporte->nombre }}</a></li>
                     @endforeach
+                    <li><a href="/Inicio">Todos</a></li>
                 </ul>
 
             </li>
@@ -46,7 +47,7 @@
 
 
 
-    <div style="width: 97%; margin:20px;   box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);  border: 1px solid black; border-radius: 20px; ">
+    <div style="width: 97%; margin-left:1.5%;  margin-bottom:1.5%;  margin-top:-1%; box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);  border: 1px solid black; border-radius: 20px; ">
         <div>
             <div id="map" style="height: 80vh; color: black; border-radius: 20px;"></div>
         </div>

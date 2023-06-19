@@ -95,7 +95,7 @@
                         <form action="/publicaciones/comentario/crear" method="POST" class="msger-inputarea"
                             enctype="multipart/form-data" id="msform">
                             @csrf
-                            <input type="hidden" id="user_id" name="user_id" value="{{ $usuario->id }} " required>
+                            <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }} " required>
                             <input type="hidden" id="zona" name="zona" value="{{ $zona->id }} " required>
                             <input type="hidden" id="publicacion_id" name="publicacion_id"
                                 value="{{ $publicacion->id }} " required>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 
 
     <style>
@@ -29,7 +29,7 @@
         }
 
         body {
-            font-family: montserrat, arial, verdana;
+            font-family: 'Courgette', cursive;
         }
 
         /*form styles*/
@@ -262,9 +262,9 @@
                     ['get', 'point_count'],
                     '#51bbd6',
                     10,
-                    '#f1f075',
-                    100,
-                    '#f28cb1'
+                    '#f1a075',
+                    50,
+                    '#f17575'
                 ],
                 'circle-radius': [
                     'step',
@@ -274,10 +274,11 @@
                     20,
                     100,
                     30
-                ]
+                ],
+                'circle-stroke-width': 2, // Ancho del borde
+                'circle-stroke-color': '#000000' // Color del borde
             }
         });
-
         map.addLayer({
             id: 'cluster-count',
             type: 'symbol',
@@ -299,10 +300,10 @@
             source: 'markers',
             filter: ['!', ['has', 'point_count']],
             paint: {
-                'circle-color': 'red',
+                'circle-color': '#83f175',
                 'circle-radius': 9,
-                'circle-stroke-width': 1,
-                'circle-stroke-color': 'red'
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#000000'
             }
         });
 

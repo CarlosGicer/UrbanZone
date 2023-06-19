@@ -17,23 +17,29 @@ class publicacionController extends Controller
      */
     public function index()
     {
-        return view("web.zonas", ['zonas'=>Zona::paginate(6), 'deportes' => Deporte::all(), 'deporte_id' => null]);
+        if (Auth::User()->rol == 'admin') {
+            return view("admin.zonasAdmin", ['zonas' => Zona::paginate(13), 'deportes' => Deporte::all(), 'deporte_id' => null]);
+        } else {
+            return view("web.zonas", ['zonas' => Zona::paginate(6), 'deportes' => Deporte::all(), 'deporte_id' => null]);
+        }
     }
     public function index2(Request $request)
     {
-       
-        return view("web.zonas", ['zonas' => Zona::where('nombre',$request->input('buscador'))->get()->paginate(6), 'deportes' => Deporte::all(), 'deporte_id' => null]);
+
+        return view("web.zonas", ['zonas' => Zona::where('nombre', $request->input('buscador'))->paginate(6), 'deportes' => Deporte::all(), 'deporte_id' => null]);
     }
     public function filtro_deporte(Deporte $deporte)
     {
-        return view("web.zonas", ['zonas'=>Zona::paginate(6), 'deportes' => Deporte::all(), 'deporte_id' => $deporte->id]);
+        return view("web.zonas", ['zonas' => Zona::where('deporte_id', $deporte->id)->paginate(6), 'deportes' => Deporte::all(), 'deporte_id' => $deporte->id]);
     }
+
+
     /**
      * Show the form for creating a new resource.
      */
     public function create(Zona $zona)
     {
-        $usuario = Auth::user(); // Obtener el usuario de la sesión actual
+        $usuario = Auth::user();
 
         return view("web.nuevaPublicacion", [
             'zona' => $zona,
@@ -57,7 +63,7 @@ class publicacionController extends Controller
         $path = $request->file('multimedia')->store('public');
         $publicacion->multimedia =  str_replace('public', 'storage', $path);
         $publicacion->save();
-        return redirect('/zonas');
+        return redirect('/zonas/publicaciones/' . $request->input('zona'));
     }
 
 
@@ -69,8 +75,11 @@ class publicacionController extends Controller
      */
     public function show(Zona $zona)
     {
-        return view("web.zonaPublicaciones", ['zona' => $zona,'deportes'=>Deporte::all(), 'usuarios' => User::all(), 'publicaciones' =>  Publicacion::where('zona_id', $zona->id)->get(), 'comentarios'=>Comentario::all()]);
-        
+        if (Auth::User()->rol == 'admin') {
+            return view("admin.zonaPublicacionesAdmin", ['zona' => $zona, 'deportes' => Deporte::all(), 'usuarios' => User::all(), 'publicaciones' =>  Publicacion::where('zona_id', $zona->id)->paginate(4), 'comentarios' => Comentario::all()]);
+        } else {
+            return view("web.zonaPublicaciones", ['zona' => $zona, 'deportes' => Deporte::all(), 'usuarios' => User::all(), 'publicaciones' =>  Publicacion::where('zona_id', $zona->id)->paginate(4), 'comentarios' => Comentario::all()]);
+        }
     }
 
     /**

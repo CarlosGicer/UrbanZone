@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="font-family: 'Courgette', cursive;">
     <nav>
         <ul class="menu nav-menu">
             <a  id="este"><img
@@ -47,6 +47,7 @@
 
     <div id="top">
         <h1>{{ $zona->nombre }}</h1>
+      
         <img class="FotoZona" src="{{ asset($zona->imagen) }}" alt="..." width="30%" height="30%">
 
         <!-- Agrega los enlaces a los archivos JavaScript de Bootstrap -->
@@ -133,7 +134,7 @@
 
                     </div>
                 </div>
-               <br>
+                <span></span>
             </div>
         @endforeach
       
@@ -286,10 +287,10 @@
             source: 'markers',
             filter: ['!', ['has', 'point_count']],
             paint: {
-                'circle-color': '#83f175',
+                'circle-color': 'red',
                 'circle-radius': 9,
-                'circle-stroke-width': 2,
-                'circle-stroke-color': '#000000'
+                'circle-stroke-width': 1,
+                'circle-stroke-color': 'red'
             }
         });
 

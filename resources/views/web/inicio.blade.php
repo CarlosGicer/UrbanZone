@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="{{ asset('cssMio/stylesMio.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-   
+
     <nav>
         <ul class="menu nav-menu">
             <a href="https://fontmeme.com/shadow-effect/" id="este"><img
@@ -47,7 +48,8 @@
 
 
 
-    <div style="width: 97%; margin-left:1.5%;  margin-bottom:1.5%;  margin-top:-1%; box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);  border: 1px solid black; border-radius: 20px; ">
+    <div
+        style="width: 97%; margin-left:1.5%;  margin-bottom:1.5%;  margin-top:-1%; box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);  border: 1px solid black; border-radius: 20px; ">
         <div>
             <div id="map" style="height: 80vh; color: black; border-radius: 20px;"></div>
         </div>
@@ -148,7 +150,7 @@
                     type: 'Feature',
                     properties: {
                         title: "{{ $zona->nombre }}",
-                        description: '<a href="/zonas/publicaciones/{{ $zona->id }}"><img src="{{ asset($zona->imagen) }}" alt="{{ $zona->nombre }}" width="200px"></a>'
+                        description: '<a href="/zonas/publicaciones/{{ $zona->id }}"><img src="{{ asset($zona->imagen) }}" alt="{{ $zona->nombre }}" width="200px"></a>',
                     },
                     geometry: {
                         type: 'Point',
@@ -183,9 +185,9 @@
                     ['get', 'point_count'],
                     '#51bbd6',
                     10,
-                    '#f1f075',
-                    100,
-                    '#f28cb1'
+                    '#f1a075',
+                    50,
+                    '#f17575'
                 ],
                 'circle-radius': [
                     'step',
@@ -195,7 +197,9 @@
                     20,
                     100,
                     30
-                ]
+                ],
+                'circle-stroke-width': 2, // Ancho del borde
+                'circle-stroke-color': '#000000' // Color del borde
             }
         });
 
@@ -220,10 +224,10 @@
             source: 'markers',
             filter: ['!', ['has', 'point_count']],
             paint: {
-                'circle-color': 'red',
+                'circle-color': '#83f175',
                 'circle-radius': 9,
-                'circle-stroke-width': 1,
-                'circle-stroke-color': 'red'
+                'circle-stroke-width': 2,
+                'circle-stroke-color': '#000000'
             }
         });
 

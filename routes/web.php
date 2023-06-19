@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/Buscador', [publicacionController::class, 'index2']);
     Route::get('/zonas/{deporte}', [publicacionController::class, 'filtro_deporte']);
     Route::get('/zonas/publicaciones/{zona}', [publicacionController::class, 'show']);
-  
+
     //directamente de la zona 
     Route::get('/zonas/publicaciones/{zona}/nueva', [publicacionController::class, 'create']);
     //fuera de la zona
@@ -45,7 +45,15 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/zona/publicaciones/crear', [publicacionController::class, 'store']);
     Route::post('/publicaciones/comentario/crear', [ComentarioController::class, 'store']);
-   
 });
+
+
+
+
+Route::middleware('auth', 'rol:admin')->group(function () {
+    Route::get('/admin', [publicacionController::class, 'index']);
+    Route::get('/admin/publicaciones/{zona}', [publicacionController::class, 'show']);
+});
+
 
 require __DIR__ . '/auth.php';

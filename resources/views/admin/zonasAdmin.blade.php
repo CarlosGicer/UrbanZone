@@ -9,78 +9,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="{{ asset('cssMio/stylesMio.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
-    <style>
-    </style>
+    <link rel="stylesheet" href="{{ asset('cssMio/styleAdmin.css') }}">
 </head>
 
 <body>
-    <nav>
-        <ul class="menu nav-menu">
-            <a href="https://fontmeme.com/shadow-effect/" id="este"><img
-                    src="https://fontmeme.com/permalink/230612/02a9c006e8f5fe9bee2b8a725e9948e6.png" alt="shadow-effect"
-                    border="0"></a>
-            <li><a href="/Inicio">Mapa</a></li>
-            <li><a href="/zonas">Zonas</a></li>
-            <li><a href="/zona/nueva">Nueva Zona</a></li>
-            <li style="z-index:9999">
-                <a href="#">Deportes</a>
-                <ul class="menu-item">
-                    @foreach ($deportes as $deporte)
-                        <li><a href="/zonas/{{ $deporte->id }}">{{ $deporte->nombre }}</a></li>
+    <div class="container-fluid">
+        <nav id="nav-3">
+            <a class="link-3" href="/zonas"> UrbanZone </a>
+            <a class="link-3" href="/zonas">Zonas</a>
+            <a class="link-3" href="/profile">Perfil</a>
+          </nav>
+            <table class="table table-hover">
+                <thead>
+               
+                    <th class="text-center">#</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Deporte</th>
+                
+
+                </thead>
+                <tbody>
+                    @foreach ($zonas as $zona)
+                        <tr>
+                            <td class="text-center">{{ $zona->id }}</td>
+                            <td class="text-center">{{ $zona->nombre }}</td>
+                            @foreach ($deportes as $deporte)
+                                @if ($deporte->id == $zona->deporte_id)
+                                    <td class="text-center" width="10%">{{ $deporte->nombre }}</td>
+                                @endif
+                            @endforeach
+                            <td>
+                                <a href="/admin/publicaciones/{{ $zona->id }}">ℹ️</a><a href="">❌</a>
+                            </td>
+                        </tr>
                     @endforeach
-                    <li><a href="/zonas">Todos</a></li>
-                </ul>
 
-            </li>
+                </tbody>
 
-            <li> {{-- @auth --}}
-                <a class="nav-link active" href="/profile">Perfil</a>
-                {{-- @else
-                        <li style="list-style: none">
-                            <a id="login-register-button" href="{{ route('login') }}" id="login-register-button">LOGIN</a>
-                            @if (Route::has('register')) --}}
-            </li>
-        </ul>
-
-    </nav>
-    <div class="main">
-
-        <form action="/Buscador" method="POST" enctype="multipart/form-data" class="msger-inputarea">
-            @csrf
-            <input type="text" id="buscador" name="buscador" class="msger-input"
-                placeholder="Buscar...">
-            <button class="msger-send-btn" type='submit' name='enviar' texto=''>Buscar</button>
-        </form>
-        <ul class="cards">
-
-            @foreach ($zonas as $zona)
-          
-                    <li class="cards_item">
-                        <div class="card">
-                            <div class="card_image"><img class="foto" src="{{ asset($zona->imagen) }}"></div>
-                            <div class="card_content">
-                                <h2 class="card_title">{{ $zona->nombre }}</h2>
-                                @foreach ($deportes as $deporte)
-                                    @if ($deporte->id == $zona->deporte_id)
-                                        <p class="card_text">Deporte: {{ $deporte->nombre }} </p>
-                                    @endif
-                                @endforeach
-
-                                <a href="/zonas/publicaciones/{{ $zona->id }}"><button class="btn card_btn"> Ver
-                                    </button></a>
-
-                            </div>
-                        </div>
-                    </li>
-            @endforeach
-         
-        </ul>
+            </table>
+        </div>
         <div class="pagination justify-content-center">
             {{$zonas->links()}}
         </div>
     </div>
+
+
     <div class="footer-clean">
         <footer>
             <div class="container">

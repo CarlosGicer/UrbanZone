@@ -5,6 +5,7 @@
 }
 html{
     height: 100%;
+   
 }
 
 .bt {
@@ -111,21 +112,25 @@ a:hover {
 
 .FotoZona {
     margin-top: 40px;
-    margin-left: 20px;
+    margin-left: 5%;
+    border: 1px solid black;
 }
 
 .publicacion-img {
     width: 30%;
     height: auto;
+    border: 1px solid black;
+ 
 }
 
 .content {
     display: flex;
     align-items: flex-start;
+    border-bottom: 1px solid black;
 }
 
 .principal {
-    margin-top: 10%;
+    margin: 5%;
     text-align: center;
 }
 
@@ -140,6 +145,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
+    font-family: 'Courgette', cursive;
     background: linear-gradient(#daf4ff, #c9ecfc) no-repeat center center fixed;
 }
 
@@ -391,7 +397,7 @@ footer{
 }
 
 .main {
-    max-width: 1200px;
+    width: 1200px;
     margin: 0 auto;
 }
 
@@ -404,12 +410,13 @@ h1 {
     width: 100%;
     object-position: 50% 50%;
     object-fit: cover;
+  
 }
 
 .Box_Comentarios {
     background-color: none;
     float: right;
-    height: 62vh;
+    height: 59vh;
     width: 80%;
     overflow: auto;
     margin-left: 10px;
@@ -443,6 +450,7 @@ h1 {
     list-style: none;
     margin: 0;
     padding: 0;
+   
 }
 
 .cards_item {
@@ -469,6 +477,8 @@ h1 {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    width: 100%;
+   
 }
 
 .card_content {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 
     <style>
         /*custom font*/
@@ -23,11 +24,11 @@
 
             /*background = gradient + image pattern combo*/
             background:
-            linear-gradient(#e1f6ff, #afe8ff)
+                linear-gradient(#e1f6ff, #afe8ff)
         }
 
         body {
-            font-family: montserrat, arial, verdana;
+            f font-family: 'Courgette', cursive;
         }
 
         /*form styles*/
@@ -118,7 +119,7 @@
     <form action="/zona/publicaciones/crear" method="POST" enctype="multipart/form-data" id="msform">
         @csrf
         <fieldset>
-            <h2 class="fs-title">Create your account</h2>
+            <h2 class="fs-title">Publicacion</h2>
             <label for="user">Creado por: {{ $usuario->nombre }}</label>
             <input type="hidden" id="user" name="user" value="{{ $usuario->id }} " required>
             <br>

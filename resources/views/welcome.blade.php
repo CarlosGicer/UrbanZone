@@ -100,7 +100,9 @@
 
     <div>
         <div class="center">
-            <h1>UrbanZone</h1>
+            <h1 style="text-align: center;"><img
+                src="https://fontmeme.com/permalink/230612/02a9c006e8f5fe9bee2b8a725e9948e6.png" alt="shadow-effect"
+                border="0" style=" margin-left: 20%; width: 90%;"></h1>
             @if (Route::has('login'))
                 <div style="margin-left:20%; ">
                     @auth

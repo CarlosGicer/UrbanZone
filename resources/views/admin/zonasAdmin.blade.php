@@ -39,7 +39,7 @@
                                 @endif
                             @endforeach
                             <td>
-                                <a href="/admin/publicaciones/{{ $zona->id }}">ℹ️</a><a href="">❌</a>
+                                <a href="/admin/publicaciones/{{ $zona->id }}">ℹ️</a><a href="/admin/eliminar/zona/{{$zona->id}}">❌</a>
                             </td>
                         </tr>
                     @endforeach

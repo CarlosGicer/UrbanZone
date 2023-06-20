@@ -100,7 +100,7 @@
                             <input type="hidden" id="publicacion_id" name="publicacion_id"
                                 value="{{ $publicacion->id }} " required>
                             <input type="text" id="texto" name="texto" class="msger-input"
-                                placeholder="Enter your message..." required>
+                                placeholder="Escribe algo..." required>
                             <button class="msger-send-btn" type='submit' name='enviar'
                                 texto=''>Comentar</button>
                         </form>

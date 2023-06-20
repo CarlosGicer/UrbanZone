@@ -82,6 +82,11 @@ class publicacionController extends Controller
         }
     }
 
+    public function comentarios(Publicacion $publicacion)
+    {
+        return view("admin.comentariosAdmin", ['publicacion' => $publicacion, 'deportes' => Deporte::all(), 'usuarios' => User::all(), 'comentarios' => Comentario::all()]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -101,8 +106,14 @@ class publicacionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Publicacion $publicacion)
     {
-        //
+        $publicacion->delete();
+        return redirect('/admin');
+    }
+    public function destroyComentario(Comentario $comentario)
+    {
+        $comentario->delete();
+        return redirect('/admin');
     }
 }

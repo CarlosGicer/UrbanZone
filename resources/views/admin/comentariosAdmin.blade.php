@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -19,45 +19,40 @@
             <a class="link-3" href="/zonas">Zonas</a>
             <a class="link-3" href="/profile">Perfil</a>
         </nav>
-
-
         <table class="table table-hover">
             <thead>
 
-                <th class="text-center">#</th>
                 <th class="text-center">Nombre</th>
-                <th class="text-center">Usuario</th>
+                <th class="text-center">comentario</th>
+                <th class="text-center">fecha</th>
+
 
 
             </thead>
             <tbody>
-                @foreach ($publicaciones as $publicacion)
-                    <tr>
-                        <td class="text-center">{{ $publicacion->id }}</td>
-                        <td class="text-center">{{ $publicacion->titulo }}</td>
+                @foreach ($comentarios as $comentario)
+                    @if ($comentario->publicacion_id == $publicacion->id)
                         @foreach ($usuarios as $usuario)
-                            @if ($publicacion->user_id == $usuario->id)
-                                <td class="text-center" width="10%">{{ $usuario->nombre }}</td>
+                            @if ($comentario->user_id == $usuario->id)
+                                <td class="text-center">{{ $usuario->nombre }}</td>
+                                <td class="text-center">{{ $comentario->texto }}</td>
+                                <td class="text-center">{{ $comentario->update_at }}</td>
                             @endif
+                            <td>
+                                <a href="/admin/eliminar/comentario/{{$comentario->id}}">❌</a>
+                            </td>
                         @endforeach
-                        <td>
-
-                            <a href="/admin/publicaciones/comentarios/{{ $publicacion->id }}">ℹ️</a><a
-                                href="/admin/eliminar/publicacion/{{$publicacion->id}}">❌</a>
-
-                        </td>
-                    </tr>
+                    @endif
                 @endforeach
-
+                <div class="pagination justify-content-center">
+                    {{ $comentarios->links() }}
+                </div>
             </tbody>
 
         </table>
     </div>
-    <div class="pagination justify-content-center">
-        {{ $publicaciones->links() }}
+
     </div>
-
-
 
 
     <div class="footer-clean">
@@ -98,9 +93,12 @@
             </div>
         </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-
 
 </html>
+
+
+<!-- Agrega los enlaces a los archivos JavaScript de Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

@@ -53,6 +53,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth', 'rol:admin')->group(function () {
     Route::get('/admin', [publicacionController::class, 'index']);
     Route::get('/admin/publicaciones/{zona}', [publicacionController::class, 'show']);
+    Route::get('/admin/publicaciones/comentarios/{publicacion}', [publicacionController::class, 'show']);
+    Route::get('/admin/eliminar/zona/{zona}', [zonaController::class, 'destroy']);
+    Route::get('/admin/eliminar/publicacion/{publicacion}', [publicacionController::class, 'destroy']);
+    Route::get('/admin/eliminar/comentario/{comentario}', [publicacionController::class, 'destroyComentario']);
 });
 
 

@@ -10,14 +10,18 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        h1 {
+             h1 {
             font-family: 'Dancing Script', cursive;
             line-height: .95;
             color: #e7643c;
@@ -29,7 +33,7 @@
             -ms-user-select: none;
             user-select: none;
             pointer-events: none;
-            margin-top: -25%;
+            margin-left: -40%;
         }
 
         .w-full {
@@ -71,6 +75,12 @@
         .sm\:rounded-lg {
             border-radius: 0.5rem;
         }
+
+        body {
+            font-family: 'Courgette', cursive;
+            -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+        }
     </style>
 </head>
 
@@ -78,11 +88,12 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900"
         style=" background: url(https://upload.wikimedia.org/wikipedia/commons/f/f0/Parkour_Foundation_Winter_%283090376739%29.jpg) no-repeat center center fixed;">
         <div class="center">
-            <h1>UrbanZone</h1>
+            <h1 style="text-align: center;"><img
+                    src="https://fontmeme.com/permalink/230612/02a9c006e8f5fe9bee2b8a725e9948e6.png" alt="shadow-effect"
+                    border="0" style=" margin-left: 20%; width: 90%;"></h1>
         </div>
 
-        <div
-            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
     </div>

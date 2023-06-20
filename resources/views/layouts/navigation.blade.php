@@ -9,6 +9,11 @@
                     <x-nav-link :href="'/Inicio'" :active="request()->routeIs('Inicio')">
                         {{ __('Inicio') }}
                     </x-nav-link>
+                    @if (Auth::User()->rol == 'admin') 
+                    <x-nav-link :href="'/admin'" :active="request()->routeIs('admin')">
+                        {{ __('admin') }}
+                    </x-nav-link>
+                @endif
                 </div>
             </div>
 

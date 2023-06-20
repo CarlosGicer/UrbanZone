@@ -72,8 +72,9 @@ class zonaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Zona $zona)
     {
-        //
+        $zona->delete();
+        return redirect('/admin');
     }
 }
